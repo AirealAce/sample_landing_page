@@ -1,8 +1,8 @@
 # Create.inc Landing Page
 
-A modern landing page for Create.inc, showcasing powerful AI APIs and tools for developers.
-
 ![Landing Page Demo](day3.gif)
+
+A modern landing page for Create.inc, showcasing powerful AI APIs and tools for developers.
 
 ## Features
 
