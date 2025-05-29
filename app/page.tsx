@@ -165,60 +165,119 @@ export default function Page() {
       `}</style>
 
       {/* Navigation */}
-      <header className="flex items-center justify-between py-4 px-6 border-b border-neutral-800/50">
-        <Link href="/" className={`text-2xl md:text-3xl font-medium ${playfair.className}`}>
-          VibeDev.ai
-        </Link>
-        <nav className="flex items-center gap-4">
+      <header className="flex items-center justify-between py-3 px-4 md:px-6">
+        <div className="flex items-center gap-2">
+          <img src="/images/logo.svg" alt="Create.inc" className="w-8 h-8" />
+          <Link href="/" className={`text-xl font-medium ${playfair.className}`}>
+            Create.inc
+          </Link>
+          <div className="hidden sm:block text-xs px-2 py-0.5 bg-neutral-800 rounded-full text-neutral-400 ml-2">
+            AI TOOLS & APIS
+          </div>
+        </div>
+        <nav className="flex items-center gap-2 md:gap-3">
+          <Link href="/apis" className="text-sm text-neutral-400 hover:text-white transition-colors">
+            APIs
+          </Link>
+          <Link href="/docs" className="text-sm text-neutral-400 hover:text-white transition-colors">
+            Docs
+          </Link>
+          <Link href="/pricing" className="hidden sm:block text-sm text-neutral-400 hover:text-white transition-colors">
+            Pricing
+          </Link>
+          <Button variant="ghost" size="sm" className="text-sm">
+            Log in
+          </Button>
           <Button 
             size="sm"
-            onClick={() => {
-              document.getElementById('early-access-form')?.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-              });
-            }}
+            variant="default"
+            className="bg-[#1a5f38] hover:bg-[#1a5f38]/90 text-sm font-medium"
           >
-            Sign Up
+            Get API Key
           </Button>
         </nav>
       </header>
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 px-6 relative">
-          <div className="hero-glow" />
-          <div className="max-w-[1200px] mx-auto text-center relative z-10">
-            {/* Logo Placeholder */}
-            <div className="mb-4">
-              <img 
-                src="/images/idevibelogo.png" 
-                alt="VibeDev Logo" 
-                className="w-36 h-36 mx-auto object-contain"
-              />
+        <section className="py-16 px-4 md:px-6 relative">
+          <div className="hero-glow opacity-30" />
+          <div className="max-w-[800px] mx-auto text-center relative z-10">
+            <div className="inline-flex items-center px-4 py-1.5 text-sm font-medium text-amber-200/90 mb-8 glimmer-pill fade-in bg-amber-500/5 border border-amber-500/10">
+              ✨ Powerful AI APIs for the next generation of apps
             </div>
-            <div className="inline-flex items-center px-6 py-2 text-base font-medium text-purple-400 mb-8 glimmer-pill fade-in bg-purple-500/10 border border-purple-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]">
-              <span className={playfair.className}>A Software Composer app</span>
-            </div>
-            <h1 className={`text-4xl md:text-5xl font-medium mb-6 tracking-tight fade-in delay-1 ${playfair.className}`}>
-              The Easiest Way To<br />Vibe Code With Cursor
+            
+            <h1 className={`text-4xl md:text-6xl font-medium mb-6 fade-in delay-1 tracking-tight ${playfair.className}`}>
+              Build amazing AI apps<br />with our powerful APIs
             </h1>
-            <p className="text-lg text-neutral-400 mb-8 fade-in delay-2">
-              VibeDev is your IDE for Vibe Coding
+            
+            <p className="text-lg md:text-xl text-neutral-400 mb-12 max-w-2xl mx-auto fade-in delay-2 leading-relaxed">
+              Access a suite of powerful AI tools for text, image, music,<br className="hidden sm:block" />
+              video generation, and custom model training.
             </p>
-            <div className="fade-in delay-3">
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 fade-in delay-3">
               <Button 
-                size="lg" 
-                className="rounded-full"
-                onClick={() => {
-                  document.getElementById('early-access-form')?.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                  });
-                }}
+                size="lg"
+                variant="default"
+                className="bg-[#1a5f38] hover:bg-[#1a5f38]/90 text-base font-medium px-8 w-full sm:w-auto"
               >
-                Get Early Access
+                Get Started
               </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="text-base font-medium px-8 w-full sm:w-auto"
+              >
+                View Documentation
+              </Button>
+            </div>
+
+            {/* API Categories */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 fade-in delay-3">
+              {[
+                { icon: "🎨", name: "Image Generation" },
+                { icon: "🎵", name: "Music Creation" },
+                { icon: "🎬", name: "Video Synthesis" },
+                { icon: "🤖", name: "Custom AI Models" },
+                { icon: "👤", name: "Avatar Creation" },
+                { icon: "📝", name: "Text Generation" }
+              ].map((api) => (
+                <div key={api.name} className="glimmer-card p-4 flex flex-col items-center justify-center gap-2">
+                  <span className="text-2xl">{api.icon}</span>
+                  <span className="text-sm font-medium">{api.name}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Code Example */}
+            <div className="max-w-2xl mx-auto fade-in delay-3">
+              <div className="glimmer-card rounded-xl overflow-hidden text-left">
+                <div className="bg-black/50 px-4 py-2 border-b border-white/10 flex items-center justify-between">
+                  <span className="text-sm text-neutral-400">Example: Image Generation API</span>
+                  <Button variant="ghost" size="sm" className="h-6 text-xs">
+                    Copy
+                  </Button>
+                </div>
+                <pre className="p-4 text-sm overflow-x-auto">
+                  <code className="text-green-400">
+{`const response = await fetch('https://api.create.inc/v1/image', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    prompt: 'A futuristic city with flying cars',
+    style: 'photorealistic',
+    size: '1024x1024'
+  })
+});
+
+const { image } = await response.json();`}
+                  </code>
+                </pre>
+              </div>
             </div>
           </div>
         </section>
